@@ -1,0 +1,943 @@
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>58登录</title>
+    <!-- <link rel="shortcut icon" href="./image/58logo.png"/> -->
+    <style type="text/css">
+        body, ul, li, dl, dt, dd, p, ol, h1, h2, h3, h4, h5, h6, form, img, td, fieldset, legend {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li, ol {
+            list-style: none;
+        }
+
+        img, fieldset, iframe {
+            border: 0;
+        }
+
+        img {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        h1, h2, h3, h4, h5, h6, b {
+            font-weight: 100;
+        }
+
+        input, a, button {
+            outline: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        #bd {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            min-height: 640px;
+            background: url(https://img.58cdn.com.cn/mis/gsso/images/version3/back.jpg) no-repeat;
+            background-position: bottom;
+            -ms-background-position: bottom;
+        }
+
+        #bg {
+            position: absolute;
+            width: 315px;
+            height: 22px;
+            background: url(https://img.58cdn.com.cn/mis/gsso/images/version3/logo-pc.png) no-repeat;
+            background-size: 315px 22px;
+            top: 90.1%;
+            bottom: 7.1%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 315px;
+            margin: 0 auto;
+        }
+
+        /* 主题部分 */
+        #main {
+            min-width: 400px;
+            width: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /*transform: translate(-50%, 0);*/
+            text-align: center;
+        }
+
+        /* logo背景图 */
+        #logo {
+            width: 70px;
+            height: 63px;
+            background: url(/images/qr-code/58logo.png) no-repeat;
+            background-size: 100% 100%;
+            margin: 0 auto;
+        }
+        #logoImg {
+            width: 70px;
+            height: 63px;
+            background-size: 100% 100%;
+            margin: 0 auto;
+        }
+
+        #login {
+            font-family: PingFangSC-Regular;
+            font-size: 18px;
+            color: #555555;
+            margin-top: 1.7%;
+        }
+
+        /* 账号二维码切换登录 */
+        #dl {
+            width: 100%;
+            font-size: 0px;
+            margin: 4.9% 0 5.5%;
+        }
+
+        #dl span {
+            text-align: center;
+            display: inline-block;
+            width: 50%;
+        }
+
+        #dl span b {
+            font-family: PingFang-SC-Medium;
+            font-size: 16px;
+            color: #555;
+            line-height: 22px;
+            letter-spacing: 0;
+            cursor: pointer;
+        }
+
+        #dl span:first-child b {
+            color: #FF552E;
+        }
+
+        /* 账号登录 */
+        #account {
+            display: block;
+        }
+
+        #username, #password {
+            box-sizing: border-box;
+            width: 400px;
+            height: 50px;
+            background: #FFFFFF;
+            /* border: 1px solid rgba(255,85,46,0.93);
+            box-shadow: 0 0 4px 0 rgba(255,85,46,0.25), inset 0 2px 2px 0 ; */
+            border: 1px solid #DEDEDE;
+            border-radius: 2px;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #AAAAAA;
+            letter-spacing: -0px;
+            line-height: 50px;
+            padding-left: 20px;
+            padding-right: 150px;
+        }
+
+        #password {
+            margin-top: 2.6%;
+        }
+
+        /* 提示 */
+        #warning {
+            margin: 1.6% 0 2.1%;
+            min-height: 22px;
+        }
+
+        #warning span {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #555555;
+            letter-spacing: 0;
+            text-align: center;
+            line-height: 22px;
+        }
+
+        /* 登录按钮 */
+        #input-btn {
+            background: #FF552E;
+            border-radius: 2px;
+            width: 200px;
+            height: 40px;
+            border: none;
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #FFFFFF;
+            letter-spacing: -0px;
+            text-align: center;
+            cursor: pointer;
+            padding-bottom: 2px;
+        }
+
+        /* 二维码登录 */
+        #twocode {
+            display: none;
+            margin-top: 5%;
+        }
+
+        /* 二维码图片 */
+        #twocode .twocode-pic {
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            background: #FFFFFF;
+            border: 1px solid #DEDEDE;
+            border-radius: 2px;
+        }
+
+        #twocode .twocode-font {
+            margin-top: 2.4%;
+        }
+
+        #twocode .twocode-font span {
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #979797;
+            letter-spacing: 0;
+            text-align: center;
+        }
+
+        /* 忘记密码 */
+        #forget {
+            margin-top: 6.5%;
+        }
+
+        #forget span a {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #9297A3;
+            letter-spacing: 0;
+            text-align: center;
+            line-height: 22px;
+        }
+
+        #forget span a:hover {
+            color: #FF552E;
+        }
+
+        /*以下是下拉框样式*/
+        .mod_select {
+            padding-bottom:2.6%
+        }
+
+        .select_label {
+            color:#333;
+            float:left;
+            line-height:48px;
+            padding-right:10px;
+            font-size:14px;
+            font-weight:700;
+        }
+        .select_box {
+            border:solid 1px #dedede;
+            color:#333;
+            position:relative;
+            cursor:pointer;
+            width:398px;
+            height:48px;
+            background:#fff;
+            font-size:14px;
+            border-radius: 2px;
+        }
+        .select_open {
+            cursor: pointer;
+            display:inline-block;
+            border-left:solid 1px #dedede;
+            position:absolute;
+            right:0;
+            top:0;
+            width:40px;
+            height:48px;
+        }
+        .select_open b{
+            width: 16px;
+            height: 12px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 2;
+            margin-left:-8px;
+            margin-top:-6px;
+        }
+        .select_open b:before,
+        .select_open b:after {
+            content: '';
+            width: 0;
+            height: 0;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 5;
+            /*兼容ie8-*/
+            border-bottom: 8px transparent dashed;
+            border-left: 8px transparent dashed;
+            border-right: 8px transparent dashed;
+            border-top: 8px white solid;
+            overflow: hidden;
+        }
+
+        .select_open b:before {
+            top: 3px;
+            /*重要*/
+            border-top: 8px #666 solid;
+        }
+
+        .select_open b:after {
+            border-top: 8px white solid;
+        }
+        .select_txt {
+            display:inline-block;
+            float: left;
+            width:358px;
+            line-height:48px;
+            height:48px;
+            cursor:text;
+            overflow:hidden;
+            text-align: left;
+            box-sizing: border-box;
+            padding-left:20px;
+        }
+        .option_group {
+            width:398px;
+            border:solid 1px #dedede;
+            position:absolute;
+            top:48px;
+            left:-1px;
+            z-index:2;
+            overflow:hidden;
+            display:none;
+        }
+        .option{
+            display:block;
+            height:36px;
+            line-height:36px;
+            text-align:left;
+            padding:0 20px;
+            box-sizing: border-box;
+            width:100%;
+            background:#fff;
+        }
+        .option:hover {
+            background:#f0f0f0;
+        }
+        .bgg{
+            font-weight: bold;
+        }
+        .click-back-account{
+            color: #0066FF;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        (function() {
+            _fmOpt = {
+                partner: 'wuba',
+                appName: 'gsso',
+                token: 'wuba' + "-" + new Date().getTime() + "-"+ Math.random().toString(16).substr(2),
+                fpHost: ' https://third.58.com',
+                fmb: true,
+                cub: true,
+                success: function(data) {
+                    // 在成功完成采集后，success回调中可以获取到black_box
+                    //这里可以设置客户需求的操作，传输black_box等操作
+                    //获取设备指纹黑盒数据，并提交到业务服务器
+                    //在传输过程中请对blackbox进行url编码
+                    console.log('blackBox: ', data)
+                    document.getElementById("blackBox").value = data;
+                },
+            };
+            // 通过脚本加载 fm.js，可以了解到下载 js 脚本所花费的时间
+            var fm = document.createElement('script');
+            fm.type = 'text/javascript'; fm.async = true;
+            // 请修改 src，更新时建议添加参数消除缓存，⽐如 从 "fm.js?ver=0.1"改到 "fm.js?ver=0.2"
+            fm.src = _fmOpt.fpHost+ '/static/fm.js?ver=0.1'
+            _fmOpt.sTime = +new Date()
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(fm, s);
+            fm.onload = fm.onreadystatechange = function () {
+                _fmOpt.onTime = +new Date()
+            }
+        })();
+    </script>
+</head>
+<body>
+<form id="fm1" action="/login;jsessionid=EFCB1781DE0FD7C804538DEFDB8404A8?service=http%3A%2F%2Ficode.58corp.com%2Fv3%2Fstatic%2Fimg%2FicodeLogo.5e095a2.jpg" method="post">
+    <div id="bd">
+        <div id="bg"></div>
+    </div>
+    <!-- 主题内容 -->
+    <div id="main">
+        <div id="logo">
+
+            <div class="logobg"></div>
+        </div>
+        <div id="login">统一登录平台</div>
+
+
+
+
+
+
+
+
+
+
+
+        <div id="dl">
+                <span class="account-login">
+                    <b class="account-b">账号登录</b>
+                </span>
+                <span class="twocode-login">
+                    <b class="twocode-b">二维码登录</b>
+                </span>
+        </div>
+        <!-- 账号登录 -->
+        <div id="account">
+            <div id="tenantSelectDiv" class="mod_select" style="display: none;">
+                <div class="mod_select_inner">
+                    <div class="select_box">
+                        <span class="select_txt"></span>
+                        <a class="select_open"><b></b></a>
+                        <ul class="option_group">
+                            
+                                <li class="option" icon="https://passport.58corp.com/images/qr-code/58logo.png" value="58">58</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <input id="tenantCode" name="tenantCode" type="hidden" value=""/>
+            </div>
+            <div id="inputlogin">
+                
+                
+                <input id="username" name="username" tabindex="1" name="username" placeholder="请输入用户名" accesskey="n" type="text" value="" autocomplete="off"/>
+                
+                
+                <input id="password" name="password" tabindex="2" name="password" placeholder="请输入密码" accesskey="p" type="password" value="" autocomplete="off"/>
+            </div>
+            <div id="warning">
+                
+            </div>
+            <input type="hidden" name="lt" value="LT-109857-IkVUZHGwgzvvRGI9woVOSWDf9jtyft-passport-58corp-com"/>
+            <input type="hidden" name="execution" value="dcf19f90-d616-40ab-9522-07ef7b85c728_ZGNmMTlmOTAtZDYxNi00MGFiLTk1MjItMDdlZjdiODVjNzI4"/>
+            <input type="hidden" name="_eventId" value="submit"/>
+
+            <input id="fingerPrint" name="fingerPrint" style="display: none;" type="text" value=""/>
+            <input id="realIp" name="realIp" style="display: none;" type="text" value=""/>
+            <input id="blackBox" name="blackBox" style="display: none;" type="text" value=""/>
+            <button id="input-btn" onclick="login()">登录</button>
+        </div>
+        <!-- 二维码登录 -->
+        <div id="twocode">
+            <div class="twocode-pic"><img src="" id="qrCode" name="qrCode"></div>
+            <div class="twocode-font">
+                <span>请打开<a href="http://meishi.58.com" target="_blank" style="color: #FF552E">新版美事APP</a>扫码登录</span>
+            </div>
+            <div id="unsupportShowDiv" style="display: none">
+                <p id="showTenantName">租户暂时不支持二维码登录</p>
+                <p class="click-back-account">点此使用账号登录</p>
+            </div>
+        </div>
+        <!-- 忘记密码 -->
+        <div id="forget">
+                <span>
+                    <a id='forgetLink' href="https://rpsso.58corp.com/rpwd/refindpwd" target="_blank">修改/忘记密码？</a>
+                </span>
+            <br/><br/>
+            <span id="chromeBug">
+                    <a href="https://ftoy.m.58.com/active/1584093845175" target="_blank" style="color: red">chrome浏览器频繁登录问题阐述及解决方案</a>
+                </span>
+        </div>
+    </div>
+<div>
+</div></form>
+
+</body>
+</html>
+<script src="js/version3/jquery-1.11.3.min.js"></script>
+<script src="js/version3/jsencrypt.min.js"></script>
+<script src="js/version3/js.js"></script>
+<script src="js/fingerprint2.min.js"></script>
+<script type="text/javascript" src="https://j1.58cdn.com.cn/wmda/js/statistic_v000.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        // $("#tenantCode").change(function(){
+        //     tenantCode = $(this).val();
+        //     changeShow(tenantCode);
+        // });
+
+        // 多于一个租户，才出选择框
+        if($(".option_group").find("li").length>1){
+            $("#tenantSelectDiv").show();
+        }
+
+        //设置默认租户
+        setDefaultTenant()
+
+        changeForgetHref();
+    });
+    //重新设置重置密码的链接,加上service参数
+    function changeForgetHref(){
+        param = getServicePath();
+        if(param==null || param==''){
+            return;
+        }
+        tmpLink = $("#forgetLink").attr("href");
+        tmpLink = tmpLink + "?service="+decodeURIComponent(param);
+        $("#forgetLink").attr("href",tmpLink);
+    }
+    function getServicePath() {
+        var r = location.search.replace("?service=","");
+        if (r != null) return unescape(r);
+        return null;
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    //设置默认租户
+    function setDefaultTenant(){
+        lastTenant = getCookie("lasttenant");
+        console.info("lasttenant:"+lastTenant)
+        //有上次登录登录的租户cookie
+        if(lastTenant != null){//设置上次选择租户
+            if($(".option_group").find("li[value='"+lastTenant+"']").length>0){
+                console.info("last："+lastTenant)
+                changeTenant(lastTenant)
+                return;
+            }
+        }
+        //有58默认58,没有设第一个
+        if($(".option_group").find("li[value='58']").length>0){
+            console.info("default 58")
+            changeTenant("58");
+        }else{
+            tmpTenant = $('.option_group li:first').attr("value");
+            console.info("first tenant："+tmpTenant)
+            changeTenant(tmpTenant);
+        }
+    }
+
+    function changeTenant(tenantCode) {
+        changeShow(tenantCode)
+        // $("#tenantCode").find("option[value='"+lastTenant+"']").attr("selected",true);
+        $(".option_group").find("li[value='"+tenantCode+"']").click();
+        $(document).click();
+    }
+
+    //改变显示信息
+    function changeShow(tenantCode) {
+        //logo和文字显示
+        // icon = $(".option_group").find("li[value='"+tenantCode+"']").attr("icon");
+        // tenantName = ($(".option_group").find("li[value='"+tenantCode+"']").html());
+
+        //改变logo和文字
+        // $("#logoImg").css("background-image","url("+icon+")");
+        // $("#login").html(tenantName+"统一登录平台");
+    }
+
+    function getCookie(name) {
+        var prefix = name + "="
+        var start = document.cookie.indexOf(prefix)
+        if (start == -1) {
+            return null;
+        }
+        var end = document.cookie.indexOf(";", start + prefix.length)
+        if (end == -1) {
+            end = document.cookie.length;
+        }
+        var value = document.cookie.substring(start + prefix.length, end)
+        return unescape(value);
+    }
+
+    //切到账号登录
+    $(".click-back-account").on("click",function(){
+        $(".account-b").click();
+    });
+
+    //模拟select
+    $(".select_open,.select_txt").on("click",function(event){
+        event.stopPropagation();
+        $(".option_group").toggle();
+        // $(".option_group").hide();
+    });
+    /*赋值给文本框*/
+    $(".option").on("click",function(){
+        var text=$(this).text();
+        $(this).parent().siblings(".select_txt").text(text);
+
+        var value=$(this).attr("value");
+        changeShow(value);
+        $("#tenantCode").val(value)
+        $(".option_group").hide();
+
+        //高亮选择的option(加粗)
+        $(this).siblings().removeClass("bgg");
+        $(this).addClass("bgg");
+    })
+    $(document).on("click",function(event){
+        var eo=$(event.target);
+        if($(".select_open,.select_txt").is(":visible") && eo.attr("class")!="option_group" && !eo.parent(".option_group").length){
+            $('.option_group').hide();
+        }
+    });
+
+    var options = {
+        excludeColorDepth: true,
+        excludeScreenResolution: true,
+        excludeAvailableScreenResolution: true,
+        excludeAddBehavior: true,
+        excludeDoNotTrack: true,
+        excludeAdBlock: true,
+        excludeJsFonts: true,
+        excludePlugins: true,
+        excludeIEPlugins: true,
+        excludeTouchSupport: true
+    };
+
+    new Fingerprint2(options).get(function (result) {
+        document.getElementById("fingerPrint").value = result;
+    });
+
+    function login() {
+        $.ajax({
+            type: "post",
+            url: "resources/getPublicKey",
+            data: "",
+            async: false,
+            success: function (key) {
+                var encryption = new JSEncrypt();
+                encryption.setPublicKey(key);
+                var encryptedPassword = encryption.encrypt($("#password").val());
+                $("#password").val(encryptedPassword);
+
+                //保存到cookie并设置有效时间为15天:
+                document.cookie = "lasttenant=" + $("#tenantCode").val() + ";expires=15;Path=/";
+
+                $("#fm1").submit();
+            }
+        });
+    }
+
+    // NOTE: window.RTCPeerConnection is "not a constructor" in FF22/23
+    var RTCPeerConnection = /*window.RTCPeerConnection ||*/ window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+
+    if (RTCPeerConnection) (function () {
+        var rtc = new RTCPeerConnection({iceServers: []});
+        if (1 || window.mozRTCPeerConnection) {      // FF [and now Chrome!] needs a channel/stream to proceed
+            rtc.createDataChannel('', {reliable: false});
+        }
+        ;
+
+        rtc.onicecandidate = function (evt) {
+            // convert the candidate to SDP so we can run it through our general parser
+            // see https://twitter.com/lancestout/status/525796175425720320 for details
+            if (evt.candidate) grepSDP("a=" + evt.candidate.candidate);
+        };
+
+        rtc.createOffer(function (offerDesc) {
+            grepSDP(offerDesc.sdp);
+            rtc.setLocalDescription(offerDesc);
+        }, function (e) {
+            console.warn("offer failed", e);
+        });
+
+        var addrs = Object.create(null);
+        addrs["0.0.0.0"] = false;
+
+        function updateDisplay(newAddr) {
+            if (newAddr in addrs) return;
+            else addrs[newAddr] = true;
+            var displayAddrs = Object.keys(addrs).filter(function (k) {
+                return addrs[k];
+            });
+            //10.252.55.91 or perhaps fe80::ffff:ffff:fffe
+            var ipAddr = displayAddrs.join(" or perhaps ") || "n/a";
+            document.getElementById("realIp").value = ipAddr;
+        }
+
+        function grepSDP(sdp) {
+            var hosts = [];
+            sdp.split('\r\n').forEach(function (line) { // c.f. http://tools.ietf.org/html/rfc4566#page-39
+                if (~line.indexOf("a=candidate")) {     // http://tools.ietf.org/html/rfc4566#section-5.13
+                    var parts = line.split(' '),        // http://tools.ietf.org/html/rfc5245#section-15.1
+                        addr = parts[4],
+                        type = parts[7];
+                    if (type === 'host') updateDisplay(addr);
+                } else if (~line.indexOf("c=")) {       // http://tools.ietf.org/html/rfc4566#section-5.7
+                    var parts = line.split(' '),
+                        addr = parts[2];
+                    updateDisplay(addr);
+                }
+            });
+        }
+
+    })(); else {
+        //console.log("ifconfig | grep inet | grep -v inet6 | cut -d\" \" -f2 | tail -n1");
+        //console.log("In Chrome and Firefox your IP should display automatically, by the power of WebRTC skill.");
+    }
+
+    var qrCodeServer = null;
+
+    function getQrCodeServer() {
+        $.ajax({
+            type: "post",
+            url: "resources/getQrCodeServer",
+            data: "",
+            async: false,
+            success: function (address) {
+                qrCodeServer = address;
+            }
+        });
+    }
+
+    var qrCodeTask = null;
+
+    var requestId = null;
+    getRequestId(true);
+
+    function getRequestId(async) {
+        if (requestId === null) {
+            $.ajax({
+                type: "post",
+                url: "resources/getQrCodeRequestId",
+                data: "",
+                async: async,
+                success: function (result) {
+                    var data = JSON.parse(result);
+                    if (data.success === false || data.code !== 0) {
+                        console.error("获取requestId异常：" + data.msg);
+                        return;
+                    }
+                    requestId = data.data;
+                }
+            });
+        }
+    }
+
+    function qrCode() {
+        getRequestId(false);
+        if (qrCodeServer === null) {
+            getQrCodeServer();
+        }
+
+        $("#qrCode").attr('src', qrCodeServer + "/api/QRCode?requestId=" + requestId);
+
+
+        stopInterval();
+
+        qrCodeTask = setInterval(function () {
+            var blackBox = document.getElementById("blackBox").value
+            var service = getQueryString("service")
+            $.ajax({
+                type: "post",
+                url: "resources/getTgc",
+                data: {"requestId": requestId,"blackBox":blackBox,"service":service},
+                async: true,
+                success: function (cookieResult, success) {
+                    if (success) {
+
+                        var cookieData = JSON.parse(cookieResult);
+                        if (cookieData.success === false) {
+                            console.error("获取二维码扫描结果异常：" + cookieData.msg);
+                            //获取失败后继续获取 add by wangchao53
+                            requestId = null;
+                            stopInterval();
+                            return;
+                        }
+
+                        if (cookieData.code === 1) {
+                            return;
+                        }
+
+                        if (cookieData.code === 2) {
+                            console.error("二维码已过期：" + cookieData.msg);
+                            requestId = null;
+                            stopInterval();
+                            console.log("更新二维码")
+                            qrCode();
+                        }
+
+                        if (typeof (cookieData.data) !== 'undefined' && cookieData.data !== '') {
+                            requestId = null;
+                            stopInterval();
+                            setCookie("TGC", cookieData.data);
+                        }
+                    }
+                },
+                error: function () {
+                    console.error("获取二维码扫描结果异常");
+                    stopInterval();
+                }
+            });
+        }, 1500);
+    }
+
+    function stopInterval() {
+        if (qrCodeTask !== null) {
+            clearInterval(qrCodeTask);
+            qrCodeTask = null;
+        }
+    }
+
+    function setCookie(name, value) {
+
+        $.ajax({
+            type: "post",
+            url: "resources/getQrCodeTgtLiveTime",
+            data: "",
+            async: true,
+            success: function (liveTime) {
+                const exp = new Date();
+                exp.setTime(exp.getTime() + liveTime * 1000);
+
+                $.ajax({
+                    type: "post",
+                    url: "resources/isSupportSameSite",
+                    data: "",
+                    async: true,
+                    success: function (isSupportSameSite) {
+                        //;HttpOnly  ;SameSite=None
+                        if (isSupportSameSite) {
+                            console.log("Your browser support SameSite");
+                            document.cookie = name + "=" + decodeURI(value) + ";expires=" + exp.toUTCString() +
+                                ";secure=true;Path=/;SameSite=None";
+                                // ";Path=/";//本地测试二维码扫码登录需要用这个，否则再跳到登录页，因为本地是http，tgc写不上
+                        } else {
+                            console.log("Your browser don't support SameSite");
+                            document.cookie = name + "=" + decodeURI(value) + ";expires=" + exp.toUTCString() +
+                                ";secure=true;Path=/";
+                        }
+                        //location.replace(location.href);
+                        setTimeout(function () {
+                            location.reload();
+                            //加了选择租户页面后需要这么刷新页面 add by wangchao53
+                            // location.href=location.href
+                        }, 500);
+                    }
+                });
+            },
+            error: function () {
+                console.error("获取cookie有效期异常");
+                stopInterval();
+            }
+        });
+
+    }
+
+    var accountB = document.getElementsByClassName("account-b")[0];
+    var twocodeB = document.getElementsByClassName("twocode-b")[0];
+    var dL = document.getElementById("dl"),
+        aCcount = document.getElementById("account"),
+        twoCode = document.getElementById("twocode"),
+        username = document.getElementById("username"),
+        password = document.getElementById("password")
+    // 切换账号登录和二维登录
+    dL.addEventListener("click", function (e) {
+        var target = e.target || e.srcElement;
+
+        if (target.className == "account-b") {
+            twoCode.style.display = "none";
+            aCcount.style.display = "block";
+            target.style.color = "#FF552E";
+            if(twocodeB != undefined){
+                twocodeB.style.color = "#555";
+            }
+
+            $("#chromeBug").show();
+
+            stopInterval();
+        } else if (target.className == "twocode-b") {
+            aCcount.style.display = "none";
+            twoCode.style.display = "block";
+            target.style.color = "#FF552E";
+            accountB.style.color = "#555";
+
+            $("#chromeBug").hide();
+
+            //58租户才显示二维码登录，其他租户提示不支持
+            curruentTenant = $("#tenantCode").val();
+            if(curruentTenant=="58"){
+                $(".twocode-pic").show();
+                $(".twocode-font").show();
+                $("#unsupportShowDiv").hide();
+                qrCode();
+            }else{
+                $(".twocode-pic").hide();
+                $(".twocode-font").hide();
+                $("#unsupportShowDiv #showTenantName").html($(".select_txt").text()+"租户暂不支持二维码登录");
+                $("#unsupportShowDiv").show();
+            }
+        }
+    })
+    // 文本框获取焦点
+    username.onfocus = function () {
+        this.style.border = "1px solid rgba(255,85,46,0.93)";
+        this.style.boxShadow = "0 0 4px 0 rgba(255,85,46,0.25)";
+        this.style.boxShadow = "0 2px 2px 0 rgba(255,85,46,0.25) inset";
+        this.style.color = "#555";
+        // this.className = "username2"
+    }
+    // 文本框失去焦点
+    username.onblur = function () {
+        this.style.border = "1px solid #DEDEDE";
+        this.style.boxShadow = "";
+    }
+    // 密码框获取焦点
+    password.onfocus = function () {
+        this.style.border = "1px solid rgba(255,85,46,0.93)";
+        this.style.boxShadow = "0 0 4px 0 rgba(255,85,46,0.25)";
+        this.style.boxShadow = "0 2px 2px 0 rgba(255,85,46,0.25) inset";
+        this.style.color = "#555";
+    }
+    // 密码框失去焦点
+    password.onblur = function () {
+        this.style.border = "1px solid #DEDEDE";
+        this.style.boxShadow = "";
+    }
+
+    window.WMDA_SDK_CONFIG = ({
+        api_v: 1,
+        sdk_v: 0.1,
+        mode: 'report',
+        appid: 8256953307315,
+        key: 's8i7itd1',
+        project_id: '8246127764277',
+        cookie_domain: document.domain,   //58域下不需要该字段
+        cate_id: '',   //按需填写
+        page_extra: [{   //按需填写
+            key: '',
+            value: ''
+        }],
+        user_extra: [{   //按需填写
+            key: '',
+            value: ''
+        }],
+        channel: '',   //按需填写
+        getUserId: function () {
+        }   //按需填写
+    });
+</script>
